@@ -27,7 +27,7 @@ class Moose < Formula
     args = std_cmake_args
     args << "-DCMAKE_SKIP_RPATH=ON"
     mkdir "_build" do
-      system "cmake", "..", "-DPYTHON_EXECUTABLE:FILEPATH=#{which("python")}", *args
+      system "cmake", "..", *args
       system "make"
     end
 
