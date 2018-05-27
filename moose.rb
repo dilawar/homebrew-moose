@@ -40,7 +40,7 @@ class Moose < Formula
     end
   end
 
-  def caveats; <<-EOS.undent
+  def caveats; <<-EOS
     You need to install `networkx` and `python-libsbml` using python-pip. Open terminal
     and execute following command:
       $ pip install python-libsbml networkx
