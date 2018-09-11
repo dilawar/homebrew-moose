@@ -1,7 +1,7 @@
 class Moose < Formula
   desc "Multiscale Object Oriented Simulation Environment"
   homepage "http://moose.ncbs.res.in"
-  url "https://github.com/BhallaLab/moose-core/archive/3.1.4.tar.gz"
+  url "https://github.com/BhallaLab/moose-core/archive/v3.1.4.tar.gz"
   sha256 "5d8e56e4361723fc30598d87fecfeab67be471abc0bc017a334357fa2160cc1a"
   head "https://github.com/BhallaLab/moose-core.git", :branch=>"chamcham"
 
@@ -11,19 +11,12 @@ class Moose < Formula
   depends_on "numpy"
 
   def install
-    (buildpath/"VERSION").write("#{version}\n")
-    # FindHDF5.cmake needs a little help
-    ENV.prepend "LDFLAGS", "-lhdf5 -lhdf5_hl"
-
     args = std_cmake_args
     args << "-DCMAKE_SKIP_RPATH=ON"
+    args << "-DVERSION_MOOSE=#{version}"
     mkdir "_build" do
       system "cmake", "..", *args
-      system "make"
-    end
-
-    Dir.chdir("_build/python") do
-      system "python", *Language::Python.setup_install_args(prefix)
+      system "make install"
     end
   end
 
