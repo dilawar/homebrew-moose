@@ -19,7 +19,7 @@ class Moose < Formula
     args = std_cmake_args
     args << "-DCMAKE_SKIP_RPATH=ON"
     mkdir "_build" do
-      system "cmake", "..", "-DPYTHON_EXECUTABLE:FILEPATH=#{which("python")}", *args
+      system "cmake", "..", *args
       system "make"
     end
 
@@ -32,7 +32,7 @@ class Moose < Formula
     end
   end
 
-  def caveats; <<-EOS.undent
+  def caveats; <<-EOS
     You need to install `networkx` and `python-libsbml` using python-pip. Open terminal
     and execute following command:
       $ pip install python-libsbml networkx
