@@ -20,13 +20,14 @@ class MooseNightly < Formula
   end
 
   def caveats; <<-EOS
-    You need to install `networkx` and `python-libsbml` using python-pip. Open terminal
-    and execute following command:
-      $ pip install python-libsbml networkx
+    Please also install the following using pip
+      $ pip install matplotlib networkx 
+    Optionally, you can install the folllowing for sbml and NeuroML support.
+      $ pip install python-libsbml pyNeuroML
     EOS
   end
 
   test do
-    system "python", "-c", "import moose"
+    system "python", "-c", "import moose;print(moose.__file__)"
   end
 end
