@@ -1,13 +1,12 @@
 class Moose < Formula
   desc "Multiscale Object Oriented Simulation Environment"
   homepage "http://moose.ncbs.res.in"
-  url "https://github.com/BhallaLab/moose-core/archive/3.1.2.tar.gz"
-  sha256 "a542983e4903b2b51c79f25f4acc372555cbe31bc0b9827302a6430fad466ef7"
-  head "https://github.com/BhallaLab/moose-core.git"
+  url "https://github.com/BhallaLab/moose-core/archive/3.1.4.tar.gz"
+  sha256 "5d8e56e4361723fc30598d87fecfeab67be471abc0bc017a334357fa2160cc1a"
+  head "https://github.com/BhallaLab/moose-core.git", :branch=>"chamcham"
 
   depends_on "cmake" => :build
   depends_on "gsl"
-  depends_on "hdf5"
   depends_on :python if MacOS.version <= :snow_leopard
   depends_on "numpy"
 
@@ -25,10 +24,6 @@ class Moose < Formula
 
     Dir.chdir("_build/python") do
       system "python", *Language::Python.setup_install_args(prefix)
-    end
-
-    if build.with?("examples")
-      doc.install resource("examples")
     end
   end
 
