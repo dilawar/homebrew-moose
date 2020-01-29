@@ -7,28 +7,29 @@ class Moose < Formula
 
   depends_on "cmake" => :build
   depends_on "gsl"
-  depends_on :python if MacOS.version <= :snow_leopard
   depends_on "numpy"
+  depends_on "python" 
 
   def install
     args = std_cmake_args
     args << "-DCMAKE_SKIP_RPATH=ON"
+    args << "-DPYTHON_EXECUTABLE=/usr/local/bin/python3"
     args << "-DVERSION_MOOSE=#{version}"
     mkdir "_build" do
       system "cmake", "..", *args
-      system "make install"
+      system "make", "install"
     end
   end
 
   def caveats; <<-EOS
     Please also install the following using pip
-      $ pip install matplotlib networkx 
+      $ pip install matplotlib networkx
      Optionally, you can install the folllowing for sbml and NeuroML support.
       $ pip install python-libsbml pyNeuroML
-    EOS
+  EOS
   end
 
   test do
-    system "python", "-c", "import moose; print( moose.__version__) "
+    system "python3", "-c", "import moose; print(moose.__file__, moose.__version__)"
   end
 end
