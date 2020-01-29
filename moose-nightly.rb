@@ -6,7 +6,7 @@ class MooseNightly < Formula
   depends_on "cmake" => :build
   depends_on "gsl"
   depends_on "numpy"
-  depends_on "python@3" if MacOS.version <= :snow_leopard
+  depends_on "python"
 
   def install
     (buildpath/"VERSION").write("#{version}\n")

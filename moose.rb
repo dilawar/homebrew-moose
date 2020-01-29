@@ -13,7 +13,6 @@ class Moose < Formula
   def install
     args = std_cmake_args
     args << "-DCMAKE_SKIP_RPATH=ON"
-    args << "-DPYTHON_EXECUTABLE=/usr/local/bin/python3"
     args << "-DVERSION_MOOSE=#{version}"
     mkdir "_build" do
       system "cmake", "..", *args
