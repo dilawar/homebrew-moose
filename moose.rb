@@ -1,9 +1,9 @@
 class Moose < Formula
   desc "Multiscale Object Oriented Simulation Environment"
   homepage "http://moose.ncbs.res.in"
-  url "https://github.com/BhallaLab/moose-core/archive/v3.1.4.tar.gz"
-  sha256 "5d8e56e4361723fc30598d87fecfeab67be471abc0bc017a334357fa2160cc1a"
-  head "https://github.com/BhallaLab/moose-core.git", :branch=>"chamcham"
+  url "https://github.com/dilawar/moose-core/archive/v3.1.5rc1.tar.gz"
+  sha256 "74d8ca49662e28e3742f520ff1017ba520e2d1f9e1f94f4361c85066c1fb17e6"
+  head "https://github.com/dilawar/moose-core.git", :branch=>"chamcham"
 
   depends_on "cmake" => :build
   depends_on "gsl"
