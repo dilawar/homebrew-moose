@@ -17,8 +17,9 @@ notifications:
 
 script:
   - set +e
+  - export PATH=/usr/local/bin:$PATH
   - brew unlink python@2
-  - brew install python@3
+  - brew install python@3 graphviz
   - brew link --overwrite python
   - set -e
   - brew tap dilawar/moose
@@ -26,3 +27,5 @@ script:
   - brew install -v --HEAD moose-nightly
   - /usr/local/bin/python3 -c "import moose; print(dir(moose))"
   - set +e
+  - /usr/local/bin/python3 -m pip install matplotlib scipy networkx
+  - /usr/local/bin/python3 -c "import moose;moose.test()"
