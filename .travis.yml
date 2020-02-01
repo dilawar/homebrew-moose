@@ -11,9 +11,6 @@ notifications:
     on_success: change
     on_failure: always
 
-before_script:
-- nvm get head 
-
 script:
   - brew tap dilawar/moose
   - brew install moose
