@@ -16,10 +16,13 @@ notifications:
     on_failure: always
 
 script:
+  - set +e
   - brew unlink python@2
   - brew install python@3
   - brew link --overwrite python
+  - set -e
   - brew tap dilawar/moose
   - brew install moose
   - brew install -v --HEAD moose-nightly
   - /usr/local/bin/python3 -c "import moose; print(dir(moose))"
+  - set +e
