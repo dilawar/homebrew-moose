@@ -1,0 +1,24 @@
+language: cpp
+sudo: required
+
+os:
+- osx
+
+notifications:
+  email:
+    recipients:
+    - dilawar.s.rajput@gmail.com
+    on_success: change
+    on_failure: always
+
+before_script:
+- nvm get head 
+
+script:
+  - brew tap dilawar/moose
+  - brew install moose
+  - python3 -c "import moose; print(dir(moose))"
+  - brew uninstall -f moose 
+  - brew install --HEAD moose-nightly
+  - python3 -c "import moose; print(dir(moose))"
+  - set +e
