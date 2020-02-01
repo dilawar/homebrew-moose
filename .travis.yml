@@ -16,8 +16,9 @@ notifications:
     on_failure: always
 
 script:
+  - brew unlink python@2
   - brew install python@3
-  - brew link --overwrite python@3
+  - brew link --overwrite python
   - brew tap dilawar/moose
   - brew install moose
   - brew install --HEAD moose-nightly
