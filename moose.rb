@@ -26,10 +26,10 @@ class Moose < Formula
   end
 
   def caveats; <<-EOS
-    Please also install the following using pip
-      $ pip install matplotlib networkx
-     Optionally, you can install the folllowing for sbml and NeuroML support.
-      $ pip install python-libsbml pyNeuroML
+    Please install the following as well,
+      $ python3 -m pip install matplotlib networkx
+    And optionally, folllowing are needed for SBML and NeuroML.
+      $ python3 -m pip install python-libsbml pyNeuroML
   EOS
   end
 

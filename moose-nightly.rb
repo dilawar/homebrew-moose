@@ -1,6 +1,7 @@
 class MooseNightly < Formula
   desc "Multiscale Object Oriented Simulation Environment"
   homepage "http://moose.ncbs.res.in"
+  version "3.2-nightly"
   head "https://github.com/dilawar/moose-core.git", :branch => "master"
 
   depends_on "cmake" => :build
@@ -15,15 +16,19 @@ class MooseNightly < Formula
     mkdir "_build" do
       system "cmake", "..", *args
       system "make"
-      system "make", "install"
+      # NOTE: https://github.com/Homebrew/brew/blob/master/docs/Python-for-Formula-Authors.md
+      cd "python" do
+        system "cp", "setup.cmake.py", "setup.py"
+        system "python3", *Language::Python.setup_install_args(prefix)
+      end
     end
   end
 
   def caveats; <<-EOS
-    Please also install the following using pip
-      $ pip install matplotlib networkx
-    Optionally, you can install the folllowing for sbml and NeuroML support.
-      $ pip install python-libsbml pyNeuroML
+    Please install the following as well,
+      $ python3 -m pip install matplotlib networkx
+    And optionally, folllowing are needed for SBML and NeuroML.
+      $ python3 -m pip install python-libsbml pyNeuroML
   EOS
   end
 
