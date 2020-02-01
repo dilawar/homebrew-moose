@@ -12,8 +12,8 @@ notifications:
     on_failure: always
 
 script:
-  - brew install python
-  - brew link --overwrite python
+  - brew install python@3
+  - brew link --overwrite python@3
   - brew tap dilawar/moose
   - brew install moose
   - python3 -c "import moose; print(dir(moose))"
