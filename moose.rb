@@ -8,7 +8,7 @@ class Moose < Formula
   depends_on "cmake" => :build
   depends_on "gsl"
   depends_on "numpy"
-  depends_on "python" 
+  depends_on "python@3" 
 
   def install
     args = std_cmake_args
@@ -16,7 +16,12 @@ class Moose < Formula
     args << "-DVERSION_MOOSE=#{version}"
     mkdir "_build" do
       system "cmake", "..", *args
-      system "make", "install"
+      system "make"
+      # NOTE: https://github.com/Homebrew/brew/blob/master/docs/Python-for-Formula-Authors.md
+      cd "python" do
+        system "cp", "setup.cmake.py", "setup.py"
+        system "python3", *Language::Python.setup_install_args(prefix)
+      end
     end
   end
 
@@ -29,6 +34,6 @@ class Moose < Formula
   end
 
   test do
-    system "python3", "-c", "import moose; print(moose.__file__, moose.__version__)"
+    system "python@3", "-c", "import moose; print(moose.__file__, moose.__version__)"
   end
 end
