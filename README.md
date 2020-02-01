@@ -1,10 +1,8 @@
-# homebrew-moose
-
 Homebrew formulae for MOOSE and related projects
 
-# Install MOOSE
+# Installation
+
 
     $ brew tap BhallaLab/moose
-    $ brew install moose 
-
-
+    $ brew install moose                  # For stable version.
+    $ brew install --HEAD moose-nightly   # for bleeding edge version
