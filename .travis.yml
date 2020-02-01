@@ -21,6 +21,5 @@ script:
   - brew link --overwrite python
   - brew tap dilawar/moose
   - brew install moose
-  - brew install --HEAD moose-nightly
+  - brew install -v --HEAD moose-nightly
   - /usr/local/bin/python3 -c "import moose; print(dir(moose))"
-  - set +e
