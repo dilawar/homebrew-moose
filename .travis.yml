@@ -4,6 +4,10 @@ sudo: required
 os:
   - osx
 
+oxs_image:
+  - xcode11.3
+  - xcode10.3
+
 notifications:
   email:
     recipients:
