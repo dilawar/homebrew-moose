@@ -2,7 +2,7 @@ language: cpp
 sudo: required
 
 os:
-- osx
+  - osx
 
 notifications:
   email:
@@ -12,6 +12,8 @@ notifications:
     on_failure: always
 
 script:
+  - brew install python
+  - brew link --overwrite python
   - brew tap dilawar/moose
   - brew install moose
   - python3 -c "import moose; print(dir(moose))"
