@@ -2,7 +2,7 @@ class MooseNightly < Formula
   desc "Multiscale Object Oriented Simulation Environment"
   homepage "http://moose.ncbs.res.in"
   version "3.2-nightly"
-  head "https://github.com/dilawar/moose-core.git", :branch => "master"
+  head "https://github.com/BhallaLab/moose-core.git", :branch => "master"
 
   depends_on "cmake" => :build
   depends_on "gsl"
